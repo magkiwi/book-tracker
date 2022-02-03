@@ -9,8 +9,15 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cors())
 
-app.get('/', (req, res) => {
-    res.send("Hello")
+app.get('/api', (req, res) => {
+    res.send({
+        message:"Hello"
+    })
+})
+app.post('/api/register', (req, res) => {
+    res.send({
+        message: `Hello ${req.body.email}! You user was registered`
+    })
 })
 
 app.listen(port, () => {
