@@ -2,8 +2,6 @@ import { createWebHistory, createRouter } from "vue-router";
 import App from './App.vue'
 import Register from './components/Register'
 
-
-
 const routes = [
         {
             path: '/',
