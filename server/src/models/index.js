@@ -19,7 +19,6 @@ models.forEach(model => {
 });
 
 models.forEach(model => {
-
   if (db[model.name].associate) {
     db[model.name].associate(db);
   }
