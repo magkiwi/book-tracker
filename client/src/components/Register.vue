@@ -3,8 +3,9 @@
     	<div class="signup">
 				<form autocomplete="off" @submit.prevent>
 					<label for="chk" aria-hidden="true">Register</label>
-					<input type="email" name="email" v-model="email" placeholder="Email">
+					<input autocomplete="off" name="email" v-model="email" placeholder="Email">
 					<input type="password" name="password" v-model="password" placeholder="Password">
+					<div class="error" v-if="error"> {{error}} </div>
 					<button @click="register">Register</button>
 				</form>
         </div>
@@ -19,22 +20,29 @@ export default {
   data() {
 	  return {
 		  email: '',
-		  password: ''
+		  password: '',
+		  error: ''
 	  }
   },
   methods: {
 	  async register() {
-		  const response = await Authentication.register({
-			  email: this.email,
-			  password: this.password
-		  })
-		  console.log(response.data)
+		  try {		
+			await Authentication.register({
+				email: this.email,
+				password: this.password
+		
+		  	})
+			this.error = ''
+		  } catch (error) {
+			  this.error = error.response.data.error
+			  console.log(this.error.error)
+		  }
 	  }
   }
 }
 </script>
 
-<style>
+<style scoped>
 
 .register {
     width: 30vw;
@@ -94,6 +102,15 @@ button{
 }
 button:hover{
 	background: #CF5C36;
+}
+
+.error {
+	color: #BA0000;
+	font-weight: bold;
+	font-size: 1em;
+	justify-content: center;
+	text-align: center;
+	display: flex;
 }
 
 
