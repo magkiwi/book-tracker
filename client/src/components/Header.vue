@@ -1,17 +1,56 @@
 <template>
     <nav>
         <fa  class="icon-nav" icon="bars" />
-        <fa class="icon-nav" icon="redo" />
+        <div class="right">
+            
+            <router-link to="/books" class = "browser">
+                <fa class="icon-nav" icon="book"/>
+                <p>Browse</p>
+            </router-link>
+            <div @click = "logout" class = "browser"  v-if = "$store.state.isLogged">
+                <fa  class="icon-nav" icon="sign-out-alt" />
+                <p>logout</p>
+            </div>
+            
+        </div>
+
     </nav>
 </template>
 
 <script>
 export default {
-   name: "Header"
+   name: "Header",
+   methods: {
+       logout() {
+           this.$store.dispatch('setToken', null)
+           this.$store.dispatch('setUser', null)
+           this.$router.push('/')
+       }
+   }
 }
 </script>
 
 <style>
+
+.right {
+    display: flex;
+}
+
+.browser {
+    text-decoration: none;
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    padding: 5px 10px;
+    
+}
+.browser:hover {
+    border: 1px  #fff
+}
 nav {
     position: fixed;
     top: 0;
