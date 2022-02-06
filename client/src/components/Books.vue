@@ -1,17 +1,30 @@
 <template>
     <div class="body">
         <div>
-            Books
+            <h3> Books </h3> 
+            <div v-for="book in books" :key="book.id">
+                {{book.title}}
+                {{book.author}}
+            </div>
         </div>
     </div>
     
 </template>
 
 <script>
+
+import BookService  from '../services/BookService';
 export default {
     name: "Books",
     data() {
-        
+        return {
+            books: [
+            ]
+        }
+    },
+    async mounted () {
+        const response =  await BookService.index()
+        this.books = response.data
     }
 }
 </script>

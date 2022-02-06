@@ -12,6 +12,7 @@ const sequelize = new Sequelize(
 
 const models = [
   require('./user')(sequelize, Sequelize),
+  require('./Books')(sequelize, Sequelize),
 ];
 
 models.forEach(model => {
