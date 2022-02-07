@@ -7,7 +7,7 @@
             <div class="cards">
                 <div v-for="book in books" :key="book.id" >
                  <Card :title="book.title" :author="book.author" 
-                 :image="book.image" :year="book.year" :pages="book.pages" :category="book.category"/>        
+                 :image="book.image || this.default_img" :year="book.year" :pages="book.pages" :category="book.category"/>        
             </div>
             </div>
 
@@ -27,8 +27,8 @@ export default {
     },
     data() {
         return {
-            books: [
-            ]
+            books: [],
+            default_img: "https://media.istockphoto.com/photos/school-picture-id1016131800?b=1&k=20&m=1016131800&s=170667a&w=0&h=imifkJTvS-4b8cvOhVNlCqqvZlwI4S-xCKZ6Oxbla4Q="
         }
     },
     async mounted () {
@@ -44,7 +44,7 @@ export default {
 	display: flex;
     flex-direction: column;
 	align-items: center;
-    height: 100vh;
+    height: 100%;
 }
 
 .browser {
