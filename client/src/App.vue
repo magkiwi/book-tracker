@@ -1,26 +1,32 @@
 <template>
-  <div>
+  <div id = "app">
+	  <Header />
     <router-view />
   </div>
 </template>
 
 <script>
+import Header from './components/Header.vue';
 
 export default {
   name: 'App',
+  components: {
+	  Header
+  }
 }
 </script>
 
 <style>
-body{
-	margin: 0;
-	padding: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
-	font-family: sans-serif;
-	/* background: linear-gradient(to bottom, #BD6B73, #C6C8EE) */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+#app {
+	font-family: 'montserrat', 'sans-serif';
 	background: linear-gradient(to bottom, #CF5C36, #7C7C7C)
 }
 </style>

@@ -10,5 +10,8 @@ module.exports = {
         storage: "./book.sqlite",
       },
     },
+    authentication: {
+      jwtSecret: process.env.JWT_SECRET || 'secret'
+    }
   };
   

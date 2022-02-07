@@ -1,3 +1,5 @@
+const bcrypt = require("bcrypt");
+
 module.exports = (sequelize, Sequelize) => {
     const User = sequelize.define('User', {
       email: {
@@ -6,6 +8,7 @@ module.exports = (sequelize, Sequelize) => {
       },
       password: Sequelize.STRING
     })
+
     return User
   };
   
