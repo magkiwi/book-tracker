@@ -64,6 +64,7 @@ nav {
     margin-bottom: 20px;
     background-color: rgba(34, 34, 34, 0.9);
     color: #fefefe;
+    z-index: 100;
 }
 
 nav .icon-nav {
