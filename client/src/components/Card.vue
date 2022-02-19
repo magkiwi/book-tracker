@@ -14,6 +14,9 @@
       <h2>{{author}}</h2>
       <div class="category">{{category}}</div>
     </div>
+	<button @click="viewBook(id)">
+		View Song
+	</button>
   </div>
     
 </template>
@@ -21,7 +24,12 @@
 <script>
 export default {
     name: "Card",
-    props: ["title", "author", "image", "pages", "year", "category"],
+    props: ["id", "title", "author", "image", "pages", "year", "category"],
+	methods: {
+		viewBook(id) {
+			this.$router.push(`/book/${id}`)
+		}
+	}
 
 }
 </script>
@@ -85,7 +93,7 @@ export default {
 }
 
  .blog-card .description {
-	 padding: 1rem;
+	 padding: 1rem 0.5rem;
 	 background: #1F2124;
 	 position: relative;
 	 z-index: 1;
@@ -95,6 +103,7 @@ export default {
 	 line-height: 1;
 	 margin: 0;
 	 font-size: 1rem;
+	 width: 80%
 }
   h2 {
 	 font-size: 0.9rem;
@@ -104,11 +113,12 @@ export default {
 	 margin-top: 5px;
 }
  .blog-card .description .category {
-	 text-align: right;
+	 text-align: left;
      background-color: #CF5C36;
-     position: absolute;
+     position: relative;
+	 display: inline-block;
      bottom: 0;
-     right: 0;
+     left: 0;
      margin: 2px;
      border-radius: 3px;
      padding: 5px;
@@ -116,17 +126,32 @@ export default {
 
 }
 
-
-
-
  .blog-card:hover .details {
 	 left: 0%;
 }
+
+button {
+	background-color: rgba(34, 34, 34, 0.5);
+	border: none;
+	position: relative;
+	bottom: 0;
+	right: 0;
+	display: inline-block;
+	cursor: pointer;
+	color: #FFF;
+	transition: 0.5s;
+	text-transform: uppercase;
+	padding: 10px 0;
+}
+button:hover {
+	background-color: #CF5C36;
+}
+
  @media (min-width: 800px) {
 	 .blog-card {
          min-width: 30vw;
 		 flex-direction: row;
-		 max-width: 700px;
+		 /* max-width: 700px; */
 	}
 	 .blog-card .meta {
 		 flex-basis: 40%;
@@ -149,12 +174,12 @@ export default {
 	}
 
      .blog-card .description .category {
-	 text-align: right;
+	 text-align: left;
      background-color: #CF5C36;
-     position: absolute;
+     position: relative;
      bottom: 0;
-     right: 0;
-     margin: 10px;
+     left: 0;
+     margin-top: 10px;
      border-radius: 3px;
      padding: 5px;
 

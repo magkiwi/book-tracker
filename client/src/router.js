@@ -2,6 +2,7 @@ import { createWebHistory, createRouter } from "vue-router";
 import Register from './components/Register'
 import Books from './components/Books'
 import AddBook from './components/AddBook'
+import ViewBook from './components/ViewBook'
 
 const routes = [
         {
@@ -18,6 +19,11 @@ const routes = [
             path: '/books/add',
             name: "AddBook",
             component: AddBook
+        },
+        {
+            path: '/book/:id',
+            name: "Book",
+            component: ViewBook
         }
     ]
 

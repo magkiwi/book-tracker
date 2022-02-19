@@ -6,7 +6,7 @@
             </div>
             <div class="cards">
                 <div v-for="book in books" :key="book.id" >
-                 <Card :title="book.title" :author="book.author" 
+                 <Card  :id="book.id" :title="book.title" :author="book.author" 
                  :image="book.image || this.default_img" :year="book.year" :pages="book.pages" :category="book.category"/>        
             </div>
             </div>
